@@ -1,0 +1,74 @@
+:root {
+  --bg: #f3f5f7;
+  --panel: #ffffff;
+  --ink: #17202a;
+  --muted: #5d6b7a;
+  --line: #d9dfe5;
+  --accent: #0f766e;
+  --accent-ink: #ffffff;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  display: flex; flex-direction: column;
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  color: var(--ink); background: var(--bg);
+}
+.top { padding: 12px 20px; background: var(--ink); color: #fff; }
+.top h1 { margin: 0; font-size: 1.2rem; }
+.top p { margin: 2px 0 0; font-size: .85rem; color: #b8c2cc; }
+
+.app { flex: 1; display: grid; grid-template-columns: 360px 1fr; min-height: 0; }
+.panel {
+  background: var(--panel); border-right: 1px solid var(--line);
+  overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 18px;
+}
+.panel h2 { margin: 0 0 8px; font-size: .95rem; }
+.panel label { display: block; margin-bottom: 10px; font-size: .85rem; color: var(--muted); }
+input, select {
+  display: block; width: 100%; margin-top: 4px; padding: 8px 10px;
+  font: inherit; color: var(--ink); background: #fff;
+  border: 1px solid var(--line); border-radius: 6px;
+}
+input:focus, select:focus, button:focus-visible, #daftar button:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 1px;
+}
+.presets { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 12px; }
+button {
+  padding: 8px 10px; font: inherit; font-size: .85rem; cursor: pointer;
+  color: var(--accent-ink); background: var(--accent); border: 0; border-radius: 6px;
+}
+button:hover { filter: brightness(1.1); }
+button.ghost { color: var(--accent); background: transparent; border: 1px solid var(--accent); }
+
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.stats div { padding: 10px; background: var(--bg); border-radius: 6px; }
+.stats strong { display: block; font-size: 1.25rem; }
+.stats span { font-size: .75rem; color: var(--muted); }
+
+.grow { flex: 1; min-height: 160px; }
+.note { margin: 0 0 8px; font-size: .85rem; color: #b42318; }
+#daftar { margin: 0; padding: 0; list-style: none; }
+#daftar li { border-bottom: 1px solid var(--line); }
+#daftar button {
+  width: 100%; display: flex; justify-content: space-between; gap: 8px;
+  padding: 8px 4px; text-align: left; color: var(--ink); background: transparent; border-radius: 0;
+}
+#daftar button:hover { background: var(--bg); filter: none; }
+#daftar .val { font-weight: 600; }
+
+.mapwrap { position: relative; min-height: 0; }
+#map { position: absolute; inset: 0; }
+.legend {
+  position: absolute; right: 12px; bottom: 24px; z-index: 500;
+  padding: 10px 12px; font-size: .8rem; background: rgba(255,255,255,.95);
+  border-radius: 8px; box-shadow: 0 1px 6px rgba(0,0,0,.25);
+}
+.legend b { display: block; margin-bottom: 6px; }
+.legend i { display: inline-block; width: 16px; height: 12px; margin-right: 6px; border: 1px solid #aaa; vertical-align: -1px; }
+.legend div { margin: 2px 0; }
+
+@media (max-width: 800px) {
+  .app { grid-template-columns: 1fr; grid-template-rows: auto 60vh; }
+  .panel { border-right: 0; border-bottom: 1px solid var(--line); max-height: 55vh; }
+}

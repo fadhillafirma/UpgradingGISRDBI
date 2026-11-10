@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Peta Persebaran Kemiskinan per Provinsi 2025</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Peta Persebaran Kemiskinan per Provinsi, 2025</h1>
+    <p>Sumber: BPS (Maret & September 2025) dan GADM.</p>
+  </header>
+
+  <main class="app">
+    <aside class="panel">
+      <section>
+        <h2>Warnai peta berdasarkan</h2>
+        <select id="metrik"></select>
+      </section>
+
+      <section>
+        <h2>Filter</h2>
+        <div class="presets">
+          <button type="button" data-preset="miskinTinggi">Kemiskinan &gt; 10%</button>
+          <button type="button" data-preset="miskinRendah">Kemiskinan &lt; 5%</button>
+          <button type="button" data-preset="membaik">Selisih membaik</button>
+          <button type="button" data-preset="memburuk">Selisih memburuk</button>
+        </div>
+        <label>Nama provinsi <input id="f-nama" type="search" placeholder="mis. Papua"></label>
+        <label>Kemiskinan Maret minimal (%) <input id="f-maret" type="number" min="0" max="100" step="0.01" placeholder="mis. 10"></label>
+        <label>Kemiskinan September minimal (%) <input id="f-sept" type="number" min="0" max="100" step="0.01" placeholder="mis. 10"></label>
+        <label>Pulau <input id="f-pulau" type="search" placeholder="mis. Jawa"></label>
+        <button type="button" id="reset" class="ghost">Atur ulang filter</button>
+      </section>
+
+      <section>
+        <h2>Ringkasan</h2>
+        <div class="stats">
+          <div><strong id="s-n">-</strong><span>provinsi cocok</span></div>
+          <div><strong id="s-rata">-</strong><span>rata-rata kemiskinan</span></div>
+          <div><strong id="s-selisih">-</strong><span>rata-rata selisih</span></div>
+        </div>
+      </section>
+
+      <section class="grow">
+        <h2>Daftar provinsi</h2>
+        <p id="status" class="note" role="status"></p>
+        <ol id="daftar"></ol>
+      </section>
+    </aside>
+
+    <div class="mapwrap">
+      <div id="map"></div>
+      <div id="legend" class="legend"></div>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
